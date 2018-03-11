@@ -1,6 +1,6 @@
 (function(){
-	function toFixedTwist(value,precision){
-		var number = (typeof value === 'number') ? value.toString() : undefined;
+   function toFixedTwist(value,precision){
+    var number = (typeof value === 'number') ? value.toString() : undefined;
     precision = (typeof precision === 'number') ? Math.abs(precision) : 2;
 
     var toFixedNumber;
@@ -23,9 +23,9 @@
       throw new Error('More than one decimal point');
     }
       return toFixedNumber;
-    }
+   }
 
-    function formatNumber(number, precision){
+   function formatNumber(number, precision){
       var regexMoveDecimalForward = new RegExp('(\\.)(?=\\d)(\\d{'+precision+'})'); 
       var decimalForwardShiftedNumber = number.replace(regexMoveDecimalForward, '$2$1');
 
@@ -35,7 +35,7 @@
       var formattedNumber = roundedNumber.replace(regexMoveDecimalBackward, '.$1');
 
       return formattedNumber;
-    }
+   }
 
     window.toFixedTwist = toFixedTwist;
 })(window);
