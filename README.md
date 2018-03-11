@@ -1,2 +1,2 @@
 # toFixedTwist
-The toFixed mthod in accounting.js  implemented with Regex
+The toFixed method in accounting.js  implemented with Regex
