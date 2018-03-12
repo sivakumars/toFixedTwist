@@ -18,7 +18,7 @@
 * return : The number fixed to a certain precision following rules of rounding.
 *********************************************************************************/
 (function(){
-	 function toFixedTwist(value,precision){
+    function toFixedTwist(value,precision){
      var number = (typeof value === 'number') ? value.toString() : undefined;
      precision = (typeof precision === 'number') ? Math.abs(precision) : 2;
 
