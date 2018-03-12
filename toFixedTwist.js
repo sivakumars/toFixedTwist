@@ -52,17 +52,17 @@
      by  replacing the 'precision' number of digits with '.digits'
      e,g., 100.5 ---> 101 ---> 1.01
  */
-	function moveDecimal(number, precision){
-		var regexMoveDecimalForward = new RegExp('(\\.)(?=\\d)(\\d{'+precision+'})'); 
-		var decimalForwardShiftedNumber = number.replace(regexMoveDecimalForward, '$2$1');
-		
-		var roundedNumber = (Math.round(decimalForwardShiftedNumber)).toString();
-		
-		var regexMoveDecimalBackward = new RegExp('(\\d{'+precision+'})(?!\\d)');
-		var formattedNumber = roundedNumber.replace(regexMoveDecimalBackward, '.$1');
+	 function moveDecimal(number, precision){
+      var regexMoveDecimalForward = new RegExp('(\\.)(?=\\d)(\\d{'+precision+'})'); 
+      var decimalForwardShiftedNumber = number.replace(regexMoveDecimalForward, '$2$1');
 
-		return formattedNumber;
-	}
- 
-	window.toFixedTwist = toFixedTwist;
+      var roundedNumber = (Math.round(decimalForwardShiftedNumber)).toString();
+
+      var regexMoveDecimalBackward = new RegExp('(\\d{'+precision+'})(?!\\d)');
+      var formattedNumber = roundedNumber.replace(regexMoveDecimalBackward, '.$1');
+
+      return formattedNumber;
+   }
+
+    window.toFixedTwist = toFixedTwist;
 })(window);
