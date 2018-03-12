@@ -16,7 +16,7 @@
 * params:  value  - number to be fixed to a certain precision
            Precision - value that determines that no of digits after the decimal.
 * return : The number fixed to a certain precision following rules of rounding.
-****************************************************************************/
+*********************************************************************************/
 (function(){
 	 function toFixedTwist(value,precision){
  	 var number = (typeof value === 'number') ? value.toString() : undefined;
