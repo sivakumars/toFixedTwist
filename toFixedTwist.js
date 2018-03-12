@@ -19,30 +19,30 @@
 *********************************************************************************/
 (function(){
 	 function toFixedTwist(value,precision){
- 	 var number = (typeof value === 'number') ? value.toString() : undefined;
-   precision = (typeof precision === 'number') ? Math.abs(precision) : 2;
+     var number = (typeof value === 'number') ? value.toString() : undefined;
+     precision = (typeof precision === 'number') ? Math.abs(precision) : 2;
 
-   var toFixedNumber;
-   var splitNumber = number.split('.');
-   if(splitNumber.length === 1){
-   	if(precision > 0){
-   		return splitNumber[0]+''.concat('.').padEnd(precision+1,'0');
-   	}
-   	return splitNumber[0];
-   }else if(splitNumber.length === 2){
-   	var baseNumber = splitNumber[0];
-   	var decimalNumber = splitNumber[1];
-   	if(precision > 0){
-   		toFixedNumber = decimalNumber.length >= precision ? 
-   				moveDecimal(number, precision) : baseNumber.concat('.') + decimalNumber.padEnd(precision,'0');
-   	}else{
-   		toFixedNumber = (decimalNumber.charAt(0) >=5) ? ++baseNumber : baseNumber;
-   	}    	
-   }else{
-   	throw new Error('More than one decimal point');
-   }
- 		return toFixedNumber;
-	}
+     var toFixedNumber;
+     var splitNumber = number.split('.');
+     if(splitNumber.length === 1){
+      if(precision > 0){
+        return splitNumber[0]+''.concat('.').padEnd(precision+1,'0');
+      }
+      return splitNumber[0];
+     }else if(splitNumber.length === 2){
+      var baseNumber = splitNumber[0];
+      var decimalNumber = splitNumber[1];
+      if(precision > 0){
+        toFixedNumber = decimalNumber.length >= precision ? 
+            moveDecimal(number, precision) : baseNumber.concat('.') + decimalNumber.padEnd(precision,'0');
+      }else{
+        toFixedNumber = (decimalNumber.charAt(0) >=5) ? ++baseNumber : baseNumber;
+      }    	
+     }else{
+      throw new Error('More than one decimal point');
+     }
+      return toFixedNumber;
+    }
  /*
  *   The decimal point and the following digits upto the given precision value
      are captured.
@@ -52,17 +52,17 @@
      by  replacing the 'precision' number of digits with '.digits'
      e,g., 100.5 ---> 101 ---> 1.01
  */
-	 function moveDecimal(number, precision){
-      var regexMoveDecimalForward = new RegExp('(\\.)(?=\\d)(\\d{'+precision+'})'); 
-      var decimalForwardShiftedNumber = number.replace(regexMoveDecimalForward, '$2$1');
+ function moveDecimal(number, precision){
+  var regexMoveDecimalForward = new RegExp('(\\.)(?=\\d)(\\d{'+precision+'})'); 
+  var decimalForwardShiftedNumber = number.replace(regexMoveDecimalForward, '$2$1');
 
-      var roundedNumber = (Math.round(decimalForwardShiftedNumber)).toString();
+  var roundedNumber = (Math.round(decimalForwardShiftedNumber)).toString();
 
-      var regexMoveDecimalBackward = new RegExp('(\\d{'+precision+'})(?!\\d)');
-      var formattedNumber = roundedNumber.replace(regexMoveDecimalBackward, '.$1');
+  var regexMoveDecimalBackward = new RegExp('(\\d{'+precision+'})(?!\\d)');
+  var formattedNumber = roundedNumber.replace(regexMoveDecimalBackward, '.$1');
 
-      return formattedNumber;
-   }
+  return formattedNumber;
+ }
 
-    window.toFixedTwist = toFixedTwist;
+ window.toFixedTwist = toFixedTwist;
 })(window);
